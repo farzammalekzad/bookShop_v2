@@ -1,0 +1,20 @@
+ion-slide {
+  height: 100vh;
+  flex-direction: column;
+}
+
+.slide-1 {
+  background: var(--ion-color-secondary);
+}
+
+.slide-2 {
+  background: var(--ion-color-warning);
+}
+
+.slide-3 {
+  background: var(--ion-color-danger);
+}
+
+.slide-4 {
+  background: var(--ion-color-tertiary);
+}
