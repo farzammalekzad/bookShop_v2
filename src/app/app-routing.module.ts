@@ -44,7 +44,7 @@ const routes: Routes = [
   {
     path: 'setting',
     loadChildren: () => import('./pages/setting/setting.module').then( m => m.SettingPageModule)
-  },
+  }
 ];
 
 @NgModule({

@@ -1,0 +1,30 @@
+.category-block {
+  height: 30vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 10px;
+
+  .name {
+    font-weight: 600;
+    color: var(--ion-color-dark);
+    font-size: 2em;
+  }
+}
+div {
+  background-image: linear-gradient(var(--myvar), var(--myvar));
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+.cent {
+  color: var(--ion-color-primary);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+ion-spinner {
+  color: var(--ion-color-primary);
+}

@@ -6,7 +6,22 @@ import { LibraryPage } from './library.page';
 const routes: Routes = [
   {
     path: '',
-    component: LibraryPage
+    redirectTo: 'book-category',
+    pathMatch: 'full'
+  },
+  {
+    path: '',
+    component: LibraryPage,
+    children: [
+      {
+        path: 'book-category',
+        loadChildren: () => import('../book-category/book-category.module').then( m => m.BookCategoryPageModule)
+      },
+      {
+        path: 'request-book',
+        loadChildren: () => import('../request-book/request-book.module').then( m => m.RequestBookPageModule)
+      },
+    ]
   }
 ];
 
