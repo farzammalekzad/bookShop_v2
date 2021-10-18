@@ -44,6 +44,14 @@ const routes: Routes = [
   {
     path: 'setting',
     loadChildren: () => import('./pages/setting/setting.module').then( m => m.SettingPageModule)
+  },
+  {
+    path: 'search/details',
+    loadChildren: () => import('./pages/search-result/search-result.module').then( m => m.SearchResultPageModule)
+  },
+  {
+    path: 'detail-book',
+    loadChildren: () => import('./pages/detail-book/detail-book.module').then( m => m.DetailBookPageModule)
   }
 ];
 

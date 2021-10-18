@@ -1,0 +1,25 @@
+<ion-header>
+  <ion-toolbar color="tertiary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/search"></ion-back-button>
+    </ion-buttons>
+    <ion-title>نتایج جستجو</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content dir="ltr">
+  <div *ngIf="!results" class="ion-text-center">
+    <h3 style="color: var(--ion-color-primary)">نتایجی یافت نشد</h3>
+  </div>
+  <ion-list *ngIf="results">
+    <ion-item *ngFor="let res of results" lines="none" tappable (click)="downloadPage(res)">
+      <ion-avatar>
+        <img src='../../../assets/img/book4.png'>
+      </ion-avatar>
+      <ion-label class="ion-margin-start">
+        <h3>{{res.title}}</h3>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+
+</ion-content>

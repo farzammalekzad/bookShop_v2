@@ -1,0 +1,15 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/search/detail"></ion-back-button>
+    </ion-buttons>
+    <ion-title>اطلاعات کتاب و دانلود</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-button (click)="nativeCall()" expand="block">Native HTTP call</ion-button>
+  <ion-button (click)="downloadFile()" expand="block">Download file</ion-button>
+
+  <img [src]="myImage" *ngIf="myImage">
+</ion-content>

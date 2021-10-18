@@ -1,7 +1,19 @@
 import { Injectable } from '@angular/core';
 import {BehaviorSubject, Observable} from 'rxjs';
 import {HttpClient} from '@angular/common/http';
-import {filter, map} from "rxjs/operators";
+import {filter, map} from 'rxjs/operators';
+
+export interface SearchBookModel {
+  id: string;
+  title: string;
+  author: string;
+  language: string;
+  filesize: string;
+  extension: string;
+  download: string;
+  bookImage: string;
+}
+
 export interface AcademicModel {
   _id: string;
   field: string;
@@ -48,6 +60,7 @@ interface CategoryData {
 })
 export class LibraryService {
   private category: BehaviorSubject<[AcademicModel]> = new BehaviorSubject<[AcademicModel]>(null);
+  private searchResult: BehaviorSubject<SearchBookModel[]> = new BehaviorSubject<SearchBookModel[]>(null);
 
   constructor(private http: HttpClient) { }
 
@@ -78,5 +91,19 @@ export class LibraryService {
   public getSomeBooks() {
     return this.getAllBooks().pipe(map((x) => x.splice(1, 1)));
   }
+
+  public searching(title) {
+    return this.http.post<SearchBookModel[]>('http://ketabyab.mohammad-malekzad.ir/search', {title});
+  }
+
+  public getAllCurrentSearchResult() {
+    return this.searchResult.asObservable();
+  }
+
+  public setSearchResult(data: SearchBookModel[]) {
+    return this.searchResult.next(data);
+  }
+
+
 
 }
