@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {Http, HttpDownloadFileResult, HttpOptions} from '@capacitor-community/http';
 import {Directory, Filesystem} from '@capacitor/filesystem';
-import {from, Observable} from "rxjs";
+import {from, Observable} from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -17,9 +17,9 @@ export class HttpService {
     return from(Http.get(options));
   }
 
-  async downloadFile() {
+  async downloadFile(url) {
     const options = {
-      url: 'http://31.42.184.140/covers/22000/6b51705939229182e3e5e7a61ba7d907-d.jpg',
+      url,
       filePath: `image.jpg`,
       fileDirectory: Directory.Documents,
       method: 'GET'
@@ -28,7 +28,7 @@ export class HttpService {
     const response: HttpDownloadFileResult = await Http.downloadFile(options);
     if (response.path) {
       const read = await Filesystem.readFile({
-        path: 'image.jpg',
+        path: `image.jpg`,
         directory: Directory.Documents
       });
       return `data:image/jpeg;base64,${read.data}`;

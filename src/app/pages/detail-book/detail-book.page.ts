@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
-import {BookModel} from '../../services/library.service';
+import {BookModel, SearchBookModel} from '../../services/library.service';
 import {HttpService} from '../../services/http.service';
 import {DomSanitizer} from '@angular/platform-browser';
 
@@ -10,16 +10,22 @@ import {DomSanitizer} from '@angular/platform-browser';
   styleUrls: ['./detail-book.page.scss'],
 })
 export class DetailBookPage implements OnInit {
-  book: BookModel;
-
-  constructor(private activatedRoute: ActivatedRoute, private router: Router, private httpService: HttpService, private domSanitizer: DomSanitizer) { }
+  book: SearchBookModel;
   data = null;
   myImage = null;
+  isLoading = false;
+  constructor(private activatedRoute: ActivatedRoute,
+              private router: Router,
+              private httpService: HttpService,
+              private domSanitizer: DomSanitizer) { }
+
 
   ngOnInit() {
     this.activatedRoute.queryParams.subscribe((book) => {
+      this.isLoading = true;
       if (this.router.getCurrentNavigation().extras.state.data) {
         this.book = this.router.getCurrentNavigation().extras.state.data;
+        this.isLoading = false;
         console.log(this.book);
       }
     });
@@ -31,8 +37,8 @@ export class DetailBookPage implements OnInit {
     });
   }
 
-  downloadFile() {
-    this.httpService.downloadFile().then((base64) => {
+  downloadFile(url) {
+    this.httpService.downloadFile(url).then((base64) => {
       this.myImage = this.domSanitizer.bypassSecurityTrustResourceUrl(base64);
     });
 

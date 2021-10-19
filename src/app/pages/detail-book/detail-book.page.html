@@ -1,5 +1,5 @@
 <ion-header>
-  <ion-toolbar color="primary">
+  <ion-toolbar color="tertiary">
     <ion-buttons slot="start">
       <ion-back-button defaultHref="/search/detail"></ion-back-button>
     </ion-buttons>
@@ -7,9 +7,86 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-  <ion-button (click)="nativeCall()" expand="block">Native HTTP call</ion-button>
-  <ion-button (click)="downloadFile()" expand="block">Download file</ion-button>
+<ion-content class="ion-padding">
+  <div *ngIf="isLoading" class="ion-text-center">
+    <ion-spinner color="primary"></ion-spinner>
+  </div>
+  <ion-grid *ngIf="!isLoading">
+    <ion-row>
+      <ion-col size-sm = 12 size-md="8" offset-md = "2" class="ion-text-center">
+        <img [src]="myImage" *ngIf="myImage">
+      </ion-col>
+    </ion-row>
+    <ion-row class="ion-justify-content-center">
+      <ion-col class="set-icon" size="12">
+        <ion-item lines="none">
+          <ion-icon name="book-sharp" class="set-size"></ion-icon>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size-sm = 12 size-md="8" offset-md = "2">
+        <ion-item lines="none">
+          <ion-icon name="reorder-four"></ion-icon>
+          <ion-label><h2>عنوان:</h2></ion-label>
+        </ion-item>
+        <ion-item dir="ltr" lines="full">
+          <ion-text>{{book.title}}</ion-text>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size-sm = 12 size-md="8" offset-md = "2">
+        <ion-item lines="none">
+          <ion-icon name="reader"></ion-icon>
+          <ion-label><h2>نویسنده :</h2></ion-label>
+        </ion-item>
+        <ion-item dir="ltr" lines="full">
+          <ion-text>{{book.author}}</ion-text>
+        </ion-item>
+      </ion-col>
+    </ion-row>
 
-  <img [src]="myImage" *ngIf="myImage">
+    <ion-row>
+      <ion-col size-sm = 12 size-md="8" offset-md = "2">
+        <ion-item lines="none">
+          <ion-icon name="calendar-number"></ion-icon>
+          <ion-label><h2>زبان کتاب :</h2></ion-label>
+        </ion-item>
+        <ion-item dir="ltr" lines="full">
+          <ion-text>{{book.language}}</ion-text>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size-sm = 12 size-md="8" offset-md = "2">
+        <ion-item lines="none">
+          <ion-icon name="pencil"></ion-icon>
+          <ion-label><h2>حجم فایل :</h2></ion-label>
+        </ion-item>
+        <ion-item dir="ltr" lines="full">
+          <ion-text>{{book.filesize}}</ion-text>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size-sm = 12 size-md="8" offset-md = "2">
+        <ion-item lines="none">
+          <ion-icon name="shield-half"></ion-icon>
+          <ion-label><h2>فرمت فایل:</h2></ion-label>
+        </ion-item>
+        <ion-item dir="ltr" lines="full">
+          <ion-text>{{book.extension}}</ion-text>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+
+  </ion-grid>
+
+
+
+
+  <ion-button (click)="downloadFile(this.book.bookImage)" expand="block" shape="round" color="tertiary" class="ion-margin" [disabled]="myImage" >مشاهده عکس کتاب</ion-button>
+  <ion-button (click)="downloadFile(this.book.download)" expand="block" shape="round" color="tertiary" class="ion-margin">دانلود کتاب</ion-button>
+
 </ion-content>
