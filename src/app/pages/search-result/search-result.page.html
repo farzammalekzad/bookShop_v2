@@ -11,10 +11,18 @@
   <div *ngIf="!results" class="ion-text-center">
     <h3 style="color: var(--ion-color-primary)">نتایجی یافت نشد</h3>
   </div>
-  <ion-list *ngIf="results">
-    <ion-item *ngFor="let res of results" lines="none" tappable (click)="downloadPage(res)">
+  <ion-list *ngIf="results" >
+    <ion-item *ngFor="let res of results"  [hidden]="res.extension == 'isz' || res.extension == 'iso' || res.extension == 'doc' || res.extension == 'djvu' || res.extension == 'rar' || res.title==''" tappable (click)="downloadPage(res)" >
       <ion-avatar>
-        <img src='../../../assets/img/book4.png'>
+        <img *ngIf="res.extension == 'pdf'" src='assets/img/pdf3.png'>
+        <img *ngIf="res.extension == 'chm'" src="assets/img/chm-icon.png">
+        <img *ngIf="res.extension == 'djvu'" src="assets/img/djvu.png">
+        <img *ngIf="res.extension == 'isz'" src="assets/img/isz.png" style="background-color: #1e2023">
+        <img *ngIf="res.extension == 'iso'" src="assets/img/book4.png">
+        <img *ngIf="res.extension == 'doc'" src="assets/img/doc.png">
+        <img *ngIf="res.extension == 'epub'" src="assets/img/epub.png">
+
+
       </ion-avatar>
       <ion-label class="ion-margin-start">
         <h3>{{res.title}}</h3>

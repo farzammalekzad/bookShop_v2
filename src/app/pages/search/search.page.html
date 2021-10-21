@@ -18,7 +18,8 @@
     <ion-row class="ion-justify-content-center">
       <ion-col class="set-icon" size="12">
         <ion-item lines="none">
-          <ion-icon name="search-circle" class="set-size"></ion-icon>
+          <ion-icon *ngIf="!isLoading" name="search-circle" class="set-size"></ion-icon>
+          <ion-icon *ngIf="isLoading" name="cloud-download-outline" class="set-size"></ion-icon>
         </ion-item>
       </ion-col>
     </ion-row>
@@ -26,7 +27,10 @@
       <ion-label position="floating">نام کتاب به زبان انگلیسی</ion-label>
       <ion-input [(ngModel)]="searchInput" dir="ltr"></ion-input>
     </ion-item>
-    <ion-button expand="block" shape="round" class="ion-margin" color="tertiary" routerDirection="root" (click)="search()" >جستجو و دانلود</ion-button>
+    <div class="centering">
+      <ion-spinner *ngIf="isLoading" class="set-size">در حال جستجو</ion-spinner>
+    </div>
+    <ion-button expand="block" shape="round" class="ion-margin" color="tertiary" routerDirection="root" (click)="search()" [hidden]="isLoading" >جستجو و دانلود</ion-button>
   </div>
 
 

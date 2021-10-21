@@ -41,8 +41,12 @@ export class DetailBookPage implements OnInit {
     this.httpService.downloadFile(url).then((base64) => {
       this.myImage = this.domSanitizer.bypassSecurityTrustResourceUrl(base64);
     });
-
   }
 
+  downloadBook(url) {
+
+
+
+  }
 
 }
