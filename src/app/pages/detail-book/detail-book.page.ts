@@ -3,6 +3,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {BookModel, SearchBookModel} from '../../services/library.service';
 import {HttpService} from '../../services/http.service';
 import {DomSanitizer} from '@angular/platform-browser';
+import {DownloadBookService} from '../../services/download-book.service';
 
 @Component({
   selector: 'app-detail-book',
@@ -13,11 +14,13 @@ export class DetailBookPage implements OnInit {
   book: SearchBookModel;
   data = null;
   myImage = null;
+  myBook = null;
   isLoading = false;
   constructor(private activatedRoute: ActivatedRoute,
               private router: Router,
               private httpService: HttpService,
-              private domSanitizer: DomSanitizer) { }
+              private domSanitizer: DomSanitizer,
+              private downloadBookService: DownloadBookService) { }
 
 
   ngOnInit() {
@@ -26,14 +29,7 @@ export class DetailBookPage implements OnInit {
       if (this.router.getCurrentNavigation().extras.state.data) {
         this.book = this.router.getCurrentNavigation().extras.state.data;
         this.isLoading = false;
-        console.log(this.book);
       }
-    });
-  }
-
-  nativeCall() {
-    this.httpService.doGet('http://31.42.184.140/covers/22000/6b51705939229182e3e5e7a61ba7d907-d.jpg').subscribe((res: any) => {
-      this.data = res.data.specials;
     });
   }
 
@@ -43,10 +39,10 @@ export class DetailBookPage implements OnInit {
     });
   }
 
-  downloadBook(url) {
-
-
-
+  download(url) {
+    this.httpService.downloadBook(encodeURI(url)).then((base64) => {
+      this.myBook = base64;
+    });
   }
 
 }
