@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {HttpService} from '../../services/http.service';
 
 @Component({
   selector: 'app-downloaded-book',
@@ -6,10 +7,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./downloaded-book.page.scss'],
 })
 export class DownloadedBookPage implements OnInit {
-
-  constructor() { }
+  books: any;
+  constructor(private httpService: HttpService) { }
 
   ngOnInit() {
+    this.httpService.getBook().then((books) => {
+      this.books = books;
+      console.log(books);
+    });
   }
 
 }

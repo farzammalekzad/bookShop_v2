@@ -3,16 +3,17 @@ import {Http, HttpDownloadFileResult, HttpOptions} from '@capacitor-community/ht
 import {Directory, Filesystem} from '@capacitor/filesystem';
 import {from, Observable} from 'rxjs';
 import {Storage} from '@capacitor/storage';
-import {BOOK_KEY} from './download-book.service';
 import {FileOpener} from '@ionic-native/file-opener/ngx';
+import {LoadingController} from '@ionic/angular';
 
+export const BOOK_KEY = 'book';
 @Injectable({
   providedIn: 'root'
 })
 export class HttpService {
   myBooks = [];
 
-  constructor(private fileOpener: FileOpener) { }
+  constructor(private fileOpener: FileOpener, private loadingCtrl: LoadingController) { }
 
   doGet(url): Observable<any> {
     const options: HttpOptions = {
@@ -49,18 +50,28 @@ export class HttpService {
       fileDirectory: Directory.Documents,
       method: 'GET'
     };
+    const loading = await this.loadingCtrl.create({
+      message: 'لطفا منتظر بمانید'
+    });
+    await loading.present();
     const response: HttpDownloadFileResult = await Http.downloadFile(options);
     if (response.path) {
       const name = `${Date.now()}`;
       const mimeType = this.getMimeType(name);
-      this.fileOpener.open(response.path,mimeType).then(() => {
+      this.fileOpener.open(response.path,mimeType).then(async () => {
         console.log('File Opened');
+        this.myBooks.unshift(response.path);
+        await loading.dismiss();
       }).catch((err) => {
         console.log('error in opening file', err);
       });
-      this.myBooks.unshift(response.path);
       await Storage.set({key: BOOK_KEY, value: JSON.stringify(this.myBooks)});
     }
+  }
+
+  public async getBook() {
+    const books = await Storage.get({key: BOOK_KEY});
+    return JSON.parse(books.value) || [];
   }
 
   convertBlobToBase64 = (blob: Blob) => new Promise((resolve, reject) => {
