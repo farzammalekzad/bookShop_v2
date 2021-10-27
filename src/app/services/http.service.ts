@@ -58,13 +58,13 @@ export class HttpService {
     if (response.path) {
       const name = `${Date.now()}`;
       const mimeType = this.getMimeType(name);
-      this.fileOpener.open(response.path,mimeType).then(async () => {
+      this.fileOpener.showOpenWithDialog(response.path,mimeType).then(async () => {
         console.log('File Opened');
-        this.myBooks.unshift(response.path);
         await loading.dismiss();
       }).catch((err) => {
         console.log('error in opening file', err);
       });
+      this.myBooks.unshift(response.path);
       await Storage.set({key: BOOK_KEY, value: JSON.stringify(this.myBooks)});
     }
   }
