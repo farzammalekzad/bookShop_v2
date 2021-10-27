@@ -46,7 +46,7 @@ export class HttpService {
   async downloadBook(url, bookName) {
     const options = {
       url,
-      filePath: `${bookName.substr(bookName.lastIndexOf(' '))}.pdf`,
+      filePath: `${bookName.substr(bookName.lastIndexOf(' ') + 1)}.pdf`,
       fileDirectory: Directory.Documents,
       method: 'GET'
     };
@@ -56,14 +56,15 @@ export class HttpService {
     await loading.present();
     const response: HttpDownloadFileResult = await Http.downloadFile(options);
     if (response.path) {
-      const name = `${bookName.substr(bookName.lastIndexOf(' '))}`;
+      const name = `book.pdf`;
       const mimeType = this.getMimeType(name);
-      this.fileOpener.showOpenWithDialog(response.path,mimeType).then(async () => {
+      this.fileOpener.open(response.path,mimeType).then(async () => {
         console.log('File Opened');
         await loading.dismiss();
       }).catch((err) => {
         console.log('error in opening file', err);
       });
+      this.myBooks = await this.getBook();
       this.myBooks.unshift(response.path);
       await Storage.set({key: BOOK_KEY, value: JSON.stringify(this.myBooks)});
     }

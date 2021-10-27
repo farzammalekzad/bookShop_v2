@@ -11,7 +11,7 @@
   <ion-list dir="ltr">
     <ion-item-sliding *ngFor="let book of books">
       <ion-item (click)="openBook(book)" tappable>
-        <ion-label class="ion-text-wrap">
+        <ion-label class="ion-text-wrap" color="light">
           {{book.substr(book.lastIndexOf('/') + 1)}}
         </ion-label>
       </ion-item>

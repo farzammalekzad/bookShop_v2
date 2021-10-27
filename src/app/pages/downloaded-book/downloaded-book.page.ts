@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {BOOK_KEY, HttpService} from '../../services/http.service';
 import {FileOpener} from '@ionic-native/file-opener/ngx';
-import {Directory, Filesystem} from "@capacitor/filesystem";
-import {Storage} from "@capacitor/storage";
+import {Directory, Filesystem} from '@capacitor/filesystem';
+import {Storage} from '@capacitor/storage';
 
 @Component({
   selector: 'app-downloaded-book',
@@ -10,7 +10,7 @@ import {Storage} from "@capacitor/storage";
   styleUrls: ['./downloaded-book.page.scss'],
 })
 export class DownloadedBookPage implements OnInit {
-  books: any;
+  books = [];
   constructor(private httpService: HttpService, private fileOpener: FileOpener) { }
 
   ngOnInit() {
