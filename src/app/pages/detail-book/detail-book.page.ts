@@ -39,8 +39,8 @@ export class DetailBookPage implements OnInit {
     });
   }
 
-  download(url) {
-    this.httpService.downloadBook(encodeURI(url)).then((base64) => {
+  download(url, name) {
+    this.httpService.downloadBook(encodeURI(url), name).then((base64) => {
       this.myBook = base64;
     });
   }

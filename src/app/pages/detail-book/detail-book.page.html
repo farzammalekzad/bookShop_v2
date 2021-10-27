@@ -87,6 +87,6 @@
 
 
   <ion-button (click)="downloadFile(this.book.bookImage)" expand="block" shape="round" color="tertiary" class="ion-margin" [disabled]="myImage" >مشاهده عکس کتاب</ion-button>
-  <ion-button (click)="download(this.book.download)" expand="block" shape="round" color="tertiary" class="ion-margin">دانلود کتاب</ion-button>
+  <ion-button (click)="download(this.book.download, this.book.title)" expand="block" shape="round" color="tertiary" class="ion-margin">دانلود کتاب</ion-button>
 
 </ion-content>

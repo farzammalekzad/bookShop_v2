@@ -43,10 +43,10 @@ export class HttpService {
     }
   }
 
-  async downloadBook(url) {
+  async downloadBook(url, bookName) {
     const options = {
       url,
-      filePath: `${Date.now()}.pdf`,
+      filePath: `${bookName.substr(bookName.lastIndexOf(' '))}.pdf`,
       fileDirectory: Directory.Documents,
       method: 'GET'
     };
@@ -56,7 +56,7 @@ export class HttpService {
     await loading.present();
     const response: HttpDownloadFileResult = await Http.downloadFile(options);
     if (response.path) {
-      const name = `${Date.now()}`;
+      const name = `${bookName.substr(bookName.lastIndexOf(' '))}`;
       const mimeType = this.getMimeType(name);
       this.fileOpener.showOpenWithDialog(response.path,mimeType).then(async () => {
         console.log('File Opened');
