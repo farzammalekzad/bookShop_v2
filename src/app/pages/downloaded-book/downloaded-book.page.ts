@@ -16,7 +16,6 @@ export class DownloadedBookPage implements OnInit {
   ngOnInit() {
     this.httpService.getBook().then((books) => {
       this.books = books;
-      console.log(books);
     });
   }
 

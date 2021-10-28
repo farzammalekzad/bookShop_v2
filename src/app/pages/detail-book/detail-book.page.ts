@@ -4,6 +4,7 @@ import {BookModel, SearchBookModel} from '../../services/library.service';
 import {HttpService} from '../../services/http.service';
 import {DomSanitizer} from '@angular/platform-browser';
 import {DownloadBookService} from '../../services/download-book.service';
+import {FavoritesService} from '../../services/favorites.service';
 
 @Component({
   selector: 'app-detail-book',
@@ -20,7 +21,8 @@ export class DetailBookPage implements OnInit {
               private router: Router,
               private httpService: HttpService,
               private domSanitizer: DomSanitizer,
-              private downloadBookService: DownloadBookService) { }
+              private downloadBookService: DownloadBookService,
+              private favorService: FavoritesService) { }
 
 
   ngOnInit() {
@@ -43,6 +45,21 @@ export class DetailBookPage implements OnInit {
     this.httpService.downloadBook(encodeURI(url), name).then((base64) => {
       this.myBook = base64;
     });
+  }
+
+  addFavorites() {
+    this.favorService.addFavor(this.book).then(() => {
+      console.log('added to storage');
+    }).catch(e => {
+      console.log('Error', e);
+    });
+
+
+
+  }
+
+  share(book) {
+
   }
 
 }

@@ -89,4 +89,15 @@
   <ion-button (click)="downloadFile(this.book.bookImage)" expand="block" shape="round" color="tertiary" class="ion-margin" [disabled]="myImage" >مشاهده عکس کتاب</ion-button>
   <ion-button (click)="download(this.book.download, this.book.title)" expand="block" shape="round" color="tertiary" class="ion-margin">دانلود کتاب</ion-button>
 
+  <ion-fab vertical="bottom" horizontal="start" slot="fixed">
+    <ion-fab-button color="danger" (click)="addFavorites()">
+      <ion-icon name="heart"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button color="success" (click)="share(book)">
+      <ion-icon name="share"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
 </ion-content>
