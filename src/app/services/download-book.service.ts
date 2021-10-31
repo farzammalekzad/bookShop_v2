@@ -16,7 +16,7 @@ export class DownloadBookService {
   constructor(private http: HttpClient, private fileOpener: FileOpener) { }
 
   downloadBook(url) {
-    const proxyUrl = `https://api-cors-proxy-devdactic.herokuapp.com/${url}`;
+    const proxyUrl = url;
     return this.http.get(proxyUrl, {
       responseType: 'blob',
       reportProgress: true,

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {AcademicModel, LibraryService} from '../../services/library.service';
-import {DomSanitizer} from "@angular/platform-browser";
+import {DomSanitizer} from '@angular/platform-browser';
+import {NavigationExtras, Router} from '@angular/router';
 
 @Component({
   selector: 'app-book-category',
@@ -11,7 +12,7 @@ export class BookCategoryPage implements OnInit {
 
   categories: [AcademicModel];
 
-  constructor(private libraryService: LibraryService, private sanitizer: DomSanitizer) { }
+  constructor(private libraryService: LibraryService, private sanitizer: DomSanitizer, private router: Router) { }
 
   ngOnInit() {
     return this.libraryService.getAllCategoriesFromServer().subscribe((data) => {
@@ -20,10 +21,15 @@ export class BookCategoryPage implements OnInit {
     });
   }
 
-  openSource(data) {
-    console.log('open', data);
-    return this.libraryService.getSomeBooks().subscribe((books) => {
-      console.log(books);
+  openSource(id: string) {
+    console.log('open', id);
+    return this.libraryService.getCurrentCategoryById(id).subscribe((academic) => {
+      const navigationExtras: NavigationExtras = {
+        state: {
+          data: academic
+        }
+      };
+      this.router.navigateByUrl('library-book', navigationExtras);
     });
   }
 

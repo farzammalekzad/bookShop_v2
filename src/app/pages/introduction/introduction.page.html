@@ -1,12 +1,31 @@
 <ion-header>
-  <ion-toolbar>
+  <ion-toolbar color="primary">
     <ion-buttons slot="start">
-      <ion-back-button></ion-back-button>
+      <ion-back-button defaultHref="/landing"></ion-back-button>
     </ion-buttons>
-    <ion-title>introduction</ion-title>
+    <ion-title>معرفی امکانات</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-
+<ion-content [scrollEvents]="true" (ionScroll)="didScroll()">
+  <div class="ion-padding">
+    <ion-card *ngFor="let item of feed">
+      <ion-card-header>
+        <ion-card-title>{{ item.title }}</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        {{ item.text }}
+        <div *ngIf="item.src">
+          <video #player playsinline preload="auto">
+            <source [src]="item.src" type="video/mp4" />
+          </video>
+          <div class="bar">
+            <ion-button (click)="openFullscreen(player)" color="light" fill="expand">
+              <ion-icon slot="icon-only" name="easel"></ion-icon>
+            </ion-button>
+          </div>
+        </div>
+      </ion-card-content>
+    </ion-card>
+  </div>
 </ion-content>

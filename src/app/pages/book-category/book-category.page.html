@@ -12,7 +12,7 @@
     <ion-spinner></ion-spinner><h4>در حال جستجو....</h4>
   </div>
   <div *ngIf="categories">
-    <div class="category-block ion-padding" *ngFor="let cat of categories" tappable (click)="openSource(cat)"
+    <div class="category-block ion-padding" *ngFor="let cat of categories" tappable (click)="openSource(cat._id)"
          style="background-image: url({{cat.imageUrl}})">
       <p class="name">{{cat.field}}</p>
     </div>
