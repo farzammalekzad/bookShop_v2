@@ -50,18 +50,57 @@ export class HttpService {
       fileDirectory: Directory.Documents,
       method: 'GET'
     };
-    const loading = await this.loadingCtrl.create({
-      message: 'لطفا منتظر بمانید'
-    });
-    await loading.present();
     const response: HttpDownloadFileResult = await Http.downloadFile(options);
     if (response.path) {
       const name = `book.pdf`;
       const mimeType = this.getMimeType(name);
       this.fileOpener.open(response.path,mimeType).then(async () => {
         console.log('File Opened');
-        await loading.dismiss();
-      }).catch((err) => {
+      }).catch(async (err) => {
+        console.log('error in opening file', err);
+      });
+      this.myBooks = await this.getBook();
+      this.myBooks.unshift(response.path);
+      await Storage.set({key: BOOK_KEY, value: JSON.stringify(this.myBooks)});
+    }
+  }
+
+  async downloadBookChm(url, bookName) {
+    const options = {
+      url,
+      filePath: `${bookName.substr(bookName.lastIndexOf(' ') + 1)}.chm`,
+      fileDirectory: Directory.Documents,
+      method: 'GET'
+    };
+    const response: HttpDownloadFileResult = await Http.downloadFile(options);
+    if (response.path) {
+      const name = `book.chm`;
+      const mimeType = this.getMimeType(name);
+      this.fileOpener.showOpenWithDialog(response.path,mimeType).then(async () => {
+        console.log('File Opened');
+      }).catch(async (err) => {
+        console.log('error in opening file', err);
+      });
+      this.myBooks = await this.getBook();
+      this.myBooks.unshift(response.path);
+      await Storage.set({key: BOOK_KEY, value: JSON.stringify(this.myBooks)});
+    }
+  }
+
+  async downloadBookEpub(url, bookName) {
+    const options = {
+      url,
+      filePath: `${bookName.substr(bookName.lastIndexOf(' ') + 1)}.epub`,
+      fileDirectory: Directory.Documents,
+      method: 'GET'
+    };
+    const response: HttpDownloadFileResult = await Http.downloadFile(options);
+    if (response.path) {
+      const name = `book.epub`;
+      const mimeType = this.getMimeType(name);
+      this.fileOpener.showOpenWithDialog(response.path,mimeType).then(async () => {
+        console.log('File Opened');
+      }).catch(async (err) => {
         console.log('error in opening file', err);
       });
       this.myBooks = await this.getBook();

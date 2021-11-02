@@ -12,7 +12,7 @@
     <h3 style="color: var(--ion-color-primary)">نتایجی یافت نشد</h3>
   </div>
   <ion-list *ngIf="results" >
-    <ion-item *ngFor="let res of results"  [hidden]="res.extension == 'isz' || res.extension == 'iso' || res.extension == 'doc' || res.extension == 'djvu' || res.extension == 'rar' || res.title=='' || res.extension=='chm' || res.extension=='epub'" tappable (click)="downloadPage(res)" >
+    <ion-item *ngFor="let res of results"  [hidden]="res.extension == 'isz' || res.extension == 'iso' || res.extension == 'doc' || res.extension == 'djvu' || res.extension == 'rar' || res.title==''" tappable (click)="downloadPage(res)" >
       <ion-avatar>
         <img *ngIf="res.extension == 'pdf'" src='assets/img/pdf3.png'>
         <img *ngIf="res.extension == 'chm'" src="assets/img/chm-icon.png">

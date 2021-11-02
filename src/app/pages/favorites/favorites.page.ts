@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {FavoritesService} from '../../services/favorites.service';
 import {SearchBookModel} from '../../services/library.service';
 import {NavigationExtras, Router} from '@angular/router';
+import {ToastController} from '@ionic/angular';
 
 @Component({
   selector: 'app-favorites',
@@ -12,7 +13,9 @@ export class FavoritesPage implements OnInit {
   favorites: SearchBookModel[];
   favorite: SearchBookModel;
 
-  constructor(private favService: FavoritesService, private router: Router) { }
+  constructor(private favService: FavoritesService,
+              private router: Router,
+              private toastCtrl: ToastController) { }
 
   ngOnInit() {
     this.loadFav();
@@ -39,7 +42,12 @@ export class FavoritesPage implements OnInit {
   }
 
   async deleteFav(id: string) {
-   await this.favService.removeById(id).then(() => {
+    const toast = await this.toastCtrl.create({
+      message: 'علاقمندی حذف شد',
+      duration: 1500
+    });
+    await this.favService.removeById(id).then(() => {
+      toast.present();
       this.loadFav();
     });
   }

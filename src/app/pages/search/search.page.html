@@ -23,14 +23,16 @@
         </ion-item>
       </ion-col>
     </ion-row>
-    <ion-item>
-      <ion-label position="floating">نام کتاب به زبان انگلیسی</ion-label>
-      <ion-input [(ngModel)]="searchInput" dir="ltr"></ion-input>
-    </ion-item>
-    <div class="centering">
-      <ion-spinner *ngIf="isLoading" class="set-size-2">در حال جستجو</ion-spinner>
-    </div>
-    <ion-button expand="block" shape="round" class="ion-margin" color="tertiary" routerDirection="root" (click)="search()" [hidden]="isLoading" >جستجو و دانلود</ion-button>
+    <form #f="ngForm" (ngSubmit)="search()">
+      <ion-item>
+        <ion-label position="floating">نام کتاب به زبان انگلیسی</ion-label>
+        <ion-input name="search" required #searchCtrl minlength="6" [(ngModel)]="searchInput" dir="ltr" pattern="^[\u0000-\u007F]+$" ></ion-input>
+      </ion-item>
+      <div class="centering">
+        <ion-spinner *ngIf="isLoading" class="set-size-2">در حال جستجو</ion-spinner>
+      </div>
+      <ion-button expand="block" shape="round" class="ion-margin" color="tertiary" routerDirection="root" type="submit" [disabled]="!f.valid" [hidden]="isLoading" >جستجو و دانلود</ion-button>
+    </form>
   </div>
 
 
