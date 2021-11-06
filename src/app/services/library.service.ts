@@ -55,6 +55,16 @@ interface CategoryData {
   description: string;
 }
 
+export interface BookreqModel {
+  _id: string;
+  title: string;
+  author: string;
+  email: string;
+  mobile: string;
+  description: string;
+  status: boolean;
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -102,6 +112,10 @@ export class LibraryService {
 
   public setSearchResult(data: SearchBookModel[]) {
     return this.searchResult.next(data);
+  }
+
+  public requestBook(data: BookreqModel) {
+    return this.http.post('http://ketabyab.mohammad-malekzad.ir/request', data);
   }
 
 

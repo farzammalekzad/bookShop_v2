@@ -7,6 +7,34 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content class="ion-padding">
+  <div class="landing" >
+    <ion-row class="ion-justify-content-center">
+      <ion-col class="set-icon" size="12">
+        <ion-item lines="none">
+          <ion-icon *ngIf="!isLoading" name="book-outline" class="set-size"></ion-icon>
+          <ion-icon *ngIf="isLoading" name="cloud-download-outline" class="set-size"></ion-icon>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <form [formGroup]="form" (ngSubmit)="send()">
+      <ion-item>
+        <ion-label position="floating">نام کتاب با زبان انگلیسی</ion-label>
+        <ion-input formControlName="title" dir="ltr" ></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">نام نویسنده با زبان انگلیسی</ion-label>
+        <ion-input formControlName="author"  dir="ltr" ></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">ایمیل جهت اطلاع رسانی</ion-label>
+        <ion-input  dir="ltr" formControlName="email"></ion-input>
+      </ion-item>
+      <div class="centering">
+        <ion-spinner *ngIf="isLoading" class="set-size-2">در حال ارسال</ion-spinner>
+      </div>
+      <ion-button expand="block" shape="round" class="ion-margin" color="tertiary" routerDirection="root" type="submit" [disabled]="!form.valid" [hidden]="isLoading" >ارسال درخواست</ion-button>
+    </form>
+  </div>
 
 </ion-content>

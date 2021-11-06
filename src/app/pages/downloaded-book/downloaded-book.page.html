@@ -11,7 +11,16 @@
   <ion-list dir="ltr">
     <ion-item-sliding *ngFor="let book of books">
       <ion-item (click)="openBook(book)" tappable>
-        <ion-label class="ion-text-wrap" color="light">
+        <ion-avatar *ngIf="book.substr(book.lastIndexOf('.') + 1) == 'pdf'">
+          <img src="assets/img/pdf3.png">
+        </ion-avatar>
+        <ion-avatar *ngIf="book.substr(book.lastIndexOf('.') + 1) == 'chm'">
+          <img src="assets/img/chm-icon.png">
+        </ion-avatar>
+        <ion-avatar *ngIf="book.substr(book.lastIndexOf('.') + 1) == 'epub'">
+          <img src="assets/img/epub.png">
+        </ion-avatar>
+        <ion-label class="ion-margin-start">
           {{book.substr(book.lastIndexOf('/') + 1)}}
         </ion-label>
       </ion-item>

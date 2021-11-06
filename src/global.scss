@@ -34,6 +34,14 @@
   url("./assets/fonts/IRANSansWeb.woff2") format('woff2');
 }
 
+@font-face {
+  font-family: 'brush';
+  src: url("./assets/fonts/Brush.eot") format('eot'),
+  url("./assets/fonts/Brush.ttf") format('ttf'),
+  url("./assets/fonts/Brush.woff") format('woff'),
+  url("./assets/fonts/Brush.woff2") format('woff2');
+}
+
 *{
   font-family: IranSans;
 }

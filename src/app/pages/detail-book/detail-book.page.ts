@@ -6,6 +6,7 @@ import {DomSanitizer} from '@angular/platform-browser';
 import {DownloadBookService} from '../../services/download-book.service';
 import {FavoritesService} from '../../services/favorites.service';
 import {LoadingController, ToastController} from '@ionic/angular';
+import {Share} from '@capacitor/share';
 
 @Component({
   selector: 'app-detail-book',
@@ -108,8 +109,11 @@ export class DetailBookPage implements OnInit {
 
   }
 
-  share(book) {
-
+  async share() {
+    await Share.share({
+      text: `به شما کتاب زیر با عنوان: ${this.book.title} - نویسنده: ${this.book.author} - زبان: ${this.book.language} - فرمت: ${this.book.extension}در این اپلیکیشن پیشنهاد شده است`,
+      url: 'https://cafebazaar.ir/app/ir.mohammad.malekzad.ketabyablite'
+    });
   }
 
 }

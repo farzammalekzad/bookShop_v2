@@ -1,0 +1,44 @@
+ion-label {
+  font-family: IranSans !important;
+}
+ion-content {
+  --background: none;
+  background-image: url("../../../assets/img/library2.jpeg");
+  background-position: center top;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+ion-item {
+  --background: transparent;
+}
+
+.set-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.set-size {
+  height: 100px;
+  width: 100px;
+  color: var(--ion-color-tertiary);
+}
+
+.set-size-2 {
+  height: 70px;
+  width: 70px;
+  color: var(--ion-color-tertiary);
+}
+
+.landing {
+  margin-top: 15vh;
+}
+
+.centering {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
