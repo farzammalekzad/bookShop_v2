@@ -4,11 +4,11 @@ ion-slide {
 }
 
 .slide-1 {
-  background: var(--ion-color-secondary);
+  background: var(--ion-color-primary);
 }
 
 .slide-2 {
-  background: var(--ion-color-warning);
+  background: var(--ion-color-dark);
 }
 
 .slide-3 {
@@ -16,5 +16,32 @@ ion-slide {
 }
 
 .slide-4 {
-  background: var(--ion-color-tertiary);
+  --background: none;
+  background-image: url("../../../assets/img/tutorial2.jpeg");
+  background-position: center top;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.bottom-box {
+  position: absolute;
+  bottom: 0px;
+  background: #ffffff;
+  height: 25vh;
+  width: 100%;
+  color: #222428;
+}
+
+.set-img {
+  position: absolute;
+  margin-bottom: 30vh;
+
+}
+ion-item {
+  background: transparent !important;
+}
+
+
+.box p {
+  text-align: right;
 }
