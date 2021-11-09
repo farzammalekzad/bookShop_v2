@@ -1,14 +1,16 @@
 ion-slide {
   height: 100vh;
   flex-direction: column;
+
 }
 
 .slide-1 {
-  background: var(--ion-color-primary);
+  background: #FFFDD0;
 }
 
 .slide-2 {
-  background: var(--ion-color-dark);
+  background: #f0f0f0;
+  color: #222428;
 }
 
 .slide-3 {
@@ -27,7 +29,7 @@ ion-slide {
   position: absolute;
   bottom: 0px;
   background: #ffffff;
-  height: 25vh;
+  height: 20vh;
   width: 100%;
   color: #222428;
 }
@@ -44,4 +46,16 @@ ion-item {
 
 .box p {
   text-align: right;
+}
+
+.slide-1 ion-img {
+  height: 300px;
+  width: 300px;
+}
+ion-list {
+  --ion-background-color: none;
+}
+ion-label {
+  font-family: IranSans !important;
+  font-size: smaller !important;
 }

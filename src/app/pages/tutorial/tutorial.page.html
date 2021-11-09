@@ -1,32 +1,48 @@
-<ion-slides>
-  <ion-slide class="slide-1">
-      <ion-img class="set-img" src="./assets/img/limited.png"></ion-img>
-    <div class="bottom-box">
-      <h5>به نرم افزار دانلود کتاب زبان اصلی خوش آمدید. در صفحات بعد با امکانات اصلی آشنا می‌شویم</h5>
-      <ion-button (click)="next()">صفحه بعد</ion-button>
-    </div>
-  </ion-slide>
+<ion-content fullscreen scroll-y="false">
+  <ion-slides pager="true" #slide>
+    <ion-slide class="slide-1">
+      <ion-img src="./assets/img/lite2.png"></ion-img>
+      <h2 class="ion-padding">به آپ دانلود کتاب به زبان انگلیسی<br>خوش آمدید</h2>
+      <p>قوی ترین اپلیکیشن جستجو و دانلود کتاب‌</p>
 
-  <ion-slide class="slide-2 ion-padding">
+    </ion-slide>
+
+  <ion-slide class="slide-2">
     <ion-img src="./assets/img/tutorial.jpeg"></ion-img>
-    <div class="box">
-
-      <p>- جستجوی پیشرفته کتاب‌ها و دانلود در فرمت‌های PDF-CHM-EPUB</p>
-      <p>- ارایه اطلاعات کامل از حجم دانلود- زبان- فرمت- ...</p>
-      <p>- مشاهده صفحه روی جلد کتاب‌ها پیش از دانلود</p>
-      <p>- امکان ارسال درخواست کتاب به ناشر و ارایه آن در لیست کتب رایگان</p>
-      <p>- امکان ذخیره اطلاعات کتاب‌ها در بخش علاقمندی‌ها </p>
-      <p>- امکان اشتراک اطلاعات کتاب‌ها از طریق شبکه‌های اجتماعی</p>
-      <ion-button (click)="next()">صفحه بعد</ion-button>
-    </div>
+      <ion-list class="ion-padding">
+        <ion-item>
+          <ion-label>- جستجوی پیشرفته کتاب‌ها و دانلود در فرمت‌های PDF-CHM-EPUB</ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-label>- دارا بودن کتابخانه تخصصی با کتب رایگان</ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-label>- امکان جستجو براساس نام نویسنده</ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-label>- ارایه اطلاعات کامل از حجم دانلود- زبان- فرمت- ...</ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-label>- مشاهده صفحه روی جلد کتاب‌ها پیش از دانلود</ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-label>- امکان ارسال درخواست کتاب به ناشر و دریافت آن در لیست کتب رایگان</ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-label>- امکان ذخیره اطلاعات کتاب‌ها در بخش علاقمندی‌ها </ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-label>- امکان اشتراک اطلاعات کتاب‌ها از طریق شبکه‌های اجتماعی</ion-label>
+        </ion-item>
+      </ion-list>
   </ion-slide>
 
   <ion-slide class="slide-4">
-    <ion-img class="set-img" src="./assets/img/tutorial2.jpeg"></ion-img>
     <div class="bottom-box">
-      <p>با خرید نسخه کامل علاوه بر استفاده بدون محدودیت از ناشر برای تولید آپ‌های بهتر حمایت کنید. </p>
-      <ion-button color="tertiary" (click)="finish()">ورود</ion-button>
+      <p>با خرید نسخه کامل علاوه بر استفاده بدون محدودیت، از ناشر برای تولید آپ‌های بهتر حمایت کنید. </p>
+      <ion-button class="ion-margin ion-padding" expand="block"  shape="round" color="success" (click)="finish()">ورود</ion-button>
     </div>
   </ion-slide>
 
 </ion-slides>
+</ion-content>
