@@ -1,0 +1,61 @@
+ion-slide {
+  height: 100vh;
+  flex-direction: column;
+
+}
+
+.slide-1 {
+  background: #FFFDD0;
+}
+
+.slide-2 {
+  background: #f0f0f0;
+  color: #222428;
+}
+
+.slide-3 {
+  background: var(--ion-color-danger);
+}
+
+.slide-4 {
+  --background: none;
+  background-image: url("../../../assets/img/tutorial2.jpeg");
+  background-position: center top;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.bottom-box {
+  position: absolute;
+  bottom: 0px;
+  background: #ffffff;
+  height: 20vh;
+  width: 100%;
+  color: #222428;
+}
+
+.set-img {
+  position: absolute;
+  margin-bottom: 30vh;
+
+}
+ion-item {
+  background: transparent !important;
+}
+
+
+.box p {
+  text-align: right;
+}
+
+.slide-1 ion-img {
+  height: 300px;
+  width: 300px;
+}
+ion-list {
+  --ion-background-color: none;
+}
+ion-label {
+  font-family: IranSans !important;
+  font-size: smaller !important;
+}
