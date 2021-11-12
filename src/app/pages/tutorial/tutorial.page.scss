@@ -29,9 +29,10 @@ ion-slide {
   position: absolute;
   bottom: 0px;
   background: #ffffff;
-  height: 20vh;
+  height: 35vh;
   width: 100%;
   color: #222428;
+  margin: 1px;
 }
 
 .set-img {
@@ -57,5 +58,5 @@ ion-list {
 }
 ion-label {
   font-family: IranSans !important;
-  font-size: smaller !important;
+  font-size: 10px !important;
 }
