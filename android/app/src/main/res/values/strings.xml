@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
 <resources>
-    <string name="app_name">bookApp_2</string>
-    <string name="title_activity_main">bookApp_2</string>
-    <string name="package_name">io.ionic.starter</string>
-    <string name="custom_url_scheme">io.ionic.starter</string>
+    <string name="app_name">EnglishBookDownloaderLite</string>
+    <string name="title_activity_main">EnglishBookDownloaderLite</string>
+    <string name="package_name">ir.mohammad.malekzad.ketabyablite</string>
+    <string name="custom_url_scheme">ir.mohammad.malekzad.ketabyablite</string>
 </resources>

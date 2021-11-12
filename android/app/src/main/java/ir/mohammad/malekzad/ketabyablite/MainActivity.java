@@ -1,4 +1,4 @@
-package io.ionic.starter;
+package ir.mohammad.malekzad.ketabyablite;
 
 import com.getcapacitor.BridgeActivity;
 
