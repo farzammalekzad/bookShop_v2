@@ -42,10 +42,6 @@ const routes: Routes = [
     loadChildren: () => import('./pages/about/about.module').then( m => m.AboutPageModule)
   },
   {
-    path: 'setting',
-    loadChildren: () => import('./pages/setting/setting.module').then( m => m.SettingPageModule)
-  },
-  {
     path: 'search/details',
     loadChildren: () => import('./pages/search-result/search-result.module').then( m => m.SearchResultPageModule)
   },
