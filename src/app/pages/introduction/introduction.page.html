@@ -3,7 +3,7 @@
     <ion-buttons slot="start">
       <ion-back-button defaultHref="/landing"></ion-back-button>
     </ion-buttons>
-    <ion-title>معرفی امکانات</ion-title>
+    <ion-title>آموزش‌ها</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -15,7 +15,7 @@
       </ion-card-header>
       <ion-card-content>
         {{ item.text }}
-        <div *ngIf="item.src">
+        <div *ngIf="item.src" class="ion-text-center">
           <video #player playsinline preload="auto">
             <source [src]="item.src" type="video/mp4" />
           </video>

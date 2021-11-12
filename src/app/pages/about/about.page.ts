@@ -33,5 +33,10 @@ export class AboutPage implements OnInit {
     await Browser.open({url: 'https://cafebazaar.ir/app/ir.mohammad.malekzad'});
   }
 
+  async openAppInsta() {
+    await Browser.open({url: 'https://www.instagram.com/downloadbook/'});
+
+  }
+
 
 }
